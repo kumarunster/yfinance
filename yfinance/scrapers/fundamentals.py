@@ -4,9 +4,9 @@ import warnings
 
 import pandas as pd
 
-from yfinance import utils, const
-from yfinance.data import YfData
-from yfinance.exceptions import YFException, YFNotImplementedError
+from yfinance.yfinance import utils, const
+from yfinance.yfinance.data import YfData
+from yfinance.yfinance.exceptions import YFException, YFNotImplementedError
 
 class Fundamentals:
 

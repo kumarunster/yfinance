@@ -1,11 +1,11 @@
 import pandas as pd
 import requests
 
-from yfinance import utils
-from yfinance.data import YfData
-from yfinance.const import quote_summary_valid_modules
-from yfinance.scrapers.quote import _QUOTE_SUMMARY_URL_
-from yfinance.exceptions import YFException
+from yfinance.yfinance import utils
+from yfinance.yfinance.data import YfData
+from yfinance.yfinance.const import quote_summary_valid_modules
+from yfinance.yfinance.scrapers.quote import _QUOTE_SUMMARY_URL_
+from yfinance.yfinance.exceptions import YFException
 
 
 class Analysis:

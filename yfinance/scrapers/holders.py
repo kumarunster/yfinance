@@ -1,10 +1,10 @@
 import pandas as pd
 import requests
 
-from yfinance import utils
-from yfinance.data import YfData
-from yfinance.const import _BASE_URL_
-from yfinance.exceptions import YFDataException
+from yfinance.yfinance import utils
+from yfinance.yfinance.data import YfData
+from yfinance.yfinance.const import _BASE_URL_
+from yfinance.yfinance.exceptions import YFDataException
 
 _QUOTE_SUMMARY_URL_ = f"{_BASE_URL_}/v10/finance/quoteSummary"
 

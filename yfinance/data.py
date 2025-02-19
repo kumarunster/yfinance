@@ -163,12 +163,16 @@ class YfData(metaclass=SingletonMeta):
 
         # To avoid infinite recursion, do NOT use self.get()
         # - 'allow_redirects' copied from @psychoz971 solution - does it help USA?
-        response = self._session.get(
-            url='https://fc.yahoo.com',
-            headers=self.user_agent_headers,
-            proxies=proxy,
-            timeout=timeout,
-            allow_redirects=True)
+        try:
+            response = self._session.get(
+                url='https://fc.yahoo.com',
+                headers=self.user_agent_headers,
+                proxies=proxy,
+                timeout=timeout,
+                allow_redirects=True)
+        except Exception as exc:
+            utils.get_yf_logger().error(f"cannot fetch cookie", exc_info=exc)
+            return None
 
         if not response.cookies:
             utils.get_yf_logger().debug("response.cookies = None")
@@ -412,7 +416,7 @@ class YfData(metaclass=SingletonMeta):
 
     @lru_cache_freezeargs
     @lru_cache(maxsize=cache_maxsize)
-    def cache_get(self, url, user_agent_headers=None, params=None, proxy=None, timeout=30):
+    def cache_get(self, url, user_agent_headers=utils.user_agent_headers, params=None, proxy=None, timeout=30):
         return self.get(url, user_agent_headers, params, proxy, timeout)
 
     def _get_proxy(self, proxy):
